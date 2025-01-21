@@ -64,28 +64,40 @@ def run_discord_bot():
         user_message = str(message.content)
         channel = str(message.channel)
 
-        print(f"{username} said: '{user_message}' ({channel})")
+        if "https://x.com" in user_message:
+            if message.reference:
+                replied_message = await message.channel.fetch_message(message.reference.message_id)
 
-        if user_message.startswith("??"):
-            user_message = user_message[2:]
-            if user_message.startswith('ping'):
-                latency = round(client.latency * 1000)  # Convert latency to milliseconds
-                await message.channel.send(f'Pong! Latency is {latency}ms')
-            elif "x.com" in user_message:
-                new_content = user_message.replace("x.com", "fixupx.com")
+                new_content = user_message.replace("https://x.com", "https://fixupx.com")
                 await message.delete()  # Delete the user's message
-                await message.channel.send(f"fixTwitter post by `{username}`")
-                await message.channel.send(
-                    new_content
-                )  # Send a new message with updated content
-            elif "twitter.com" in user_message:
-                new_content = user_message.replace("twitter.com", "fixupx.com")
-                await message.delete()  # Delete the user's message
-                await message.channel.send(f"fixTwitter post by `{username}`")
+                await replied_message.reply(f"fixTwitter post by `{username}`")
                 await message.channel.send(
                     new_content
                 )  # Send a new message with updated content
             else:
-                await send_message(message, user_message, is_private=False)
+                new_content = user_message.replace("https://x.com", "https://fixupx.com")
+                await message.delete()  # Delete the user's message
+                await message.channel.send(f"fixTwitter post by `{username}`")
+                await message.channel.send(
+                    new_content
+                )  # Send a new message with updated content
+        elif "https://twitter.com" in user_message:
+            if message.reference:
+                replied_message = await message.channel.fetch_message(message.reference.message_id)
+                
+                new_content = user_message.replace("https://twitter.com", "https://fixupx.com")
+                await message.delete()  # Delete the user's message
+                await replied_message.reply(f"fixTwitter post by `{username}`")
+                await message.channel.send(
+                    new_content
+                )  # Send a new message with updated content
+            else:
+                new_content = user_message.replace("https://twitter.com", "https://fixupx.com")
+                await message.delete()  # Delete the user's message
+                await message.channel.send(f"fixTwitter post by `{username}`")
+                await message.channel.send(
+                    new_content
+                )  # Send a new message with updated content
+            
 
     client.run(TOKEN)
