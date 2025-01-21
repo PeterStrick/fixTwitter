@@ -8,7 +8,7 @@ At the moment this is not hosted on any server, for users who would like to make
 You can clone this repo using:
 
 ```bash
-gh repo clone rsh52/fixTwitter
+gh repo clone PeterStrick/fixTwitter
 ```
 
 # Usage
