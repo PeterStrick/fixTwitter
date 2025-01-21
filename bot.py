@@ -1,4 +1,3 @@
-import responses
 import discord
 from dotenv import load_dotenv
 import os
@@ -6,29 +5,6 @@ import os
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-
-
-async def send_message(message, user_message, is_private):
-    """
-    Sends a message to a user or channel based on the user's message and whether it's private or not.
-
-    Args:
-        message (discord.Message): The message object that triggered the bot.
-        user_message (str): The message sent by the user.
-        is_private (bool): Whether the message should be sent privately to the user or in the channel.
-
-    Raises:
-        discord.errors.HTTPException: If there was an error sending the message.
-
-    Returns:
-        None
-    """
-    try:
-        response = responses.get_response(user_message)
-        send_func = message.author.send if is_private else message.channel.send
-        await send_func(response)
-    except discord.errors.HTTPException as e:
-        print(e)
 
 
 def run_discord_bot():

@@ -13,9 +13,7 @@ gh repo clone rsh52/fixTwitter
 
 # Usage
 
-The `fixTwitter` bot responds to prompts starting with `??`. Once prompted, the bot will respond with a link to the fixupx version of the Twitter/X link if it detects "x.com" or "twitter.com" in the message. This will delete the original users message, but provide a new link from the `fixTwitter` bot along with a message indicating who requested the fixupx link.
-
-![Example Usage](img/example.gif)
+Works automatically
 
 # Getting Started
 
@@ -36,9 +34,9 @@ Fortunately, the heavy lifting has mostly been done at this point! It's up to th
 As mentioned above, once a hosting location has been identified, simply clone or fork the repo:
 
 ```bash
-gh repo clone rsh52/fixTwitter
+gh repo clone PeterStrick/fixTwitter
 ```
 
-Using your terminal, `cd` to the location, set up your virtual environment, and install the packages listed in the `requirement.txt` file (refer to the [Python docs](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#using-requirements-files) for more information on this process).
+Using your terminal, `cd` to the location, set up your virtual environment, and install the packages listed in the `requirements.txt` file (refer to the [Python docs](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#using-requirements-files) for more information on this process).
 
 Now all that's needed is to run `python3 main.py` and the bot should be up and running! You can confirm by checking the bot's status in the server you invited it to. Try out locally first to see it in action.
